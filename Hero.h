@@ -1,5 +1,6 @@
 // Rylie Kreibach, Landon Martinez, Preston Wofford, Edwin Dye, Andrew Cotter, Lily Grilliot 
-//Hero December 6th, 2022
+// Hero Class
+// December 6th, 2022
 
 #ifndef _HERO_H
 #define _HERO_H
@@ -15,7 +16,7 @@ class Hero {
 public:
   Hero(const int MAX_HP, int speed, int str, int def);
 
-  bool loss_health(float damage);
+  void loss_health(float damage);
   bool true_damage_loss(float damage); //Loss health to true damage
   void gain_health(float hp_gain);
 
@@ -59,12 +60,11 @@ Hero::Hero(const int MAX_HP, int speed, int str, int def)
 }
 
 // Health Loss Mutator
-bool Hero::loss_health(float damage) // Mutator
+void Hero::loss_health(float damage) // Mutator
 {
   // Receives parameter concerning how much health is lost then applies it
-  float loss =
-      defense / 100; // Converts defense to percent (10 def = 10% reduction)
-  damage = damage - (damage * defense); // Subtracts a percent of the damage from the original damage
+  float loss = defense / 100; // Converts defense to percent (10 def = 10% reduction)
+  damage -= (damage * loss); // Subtracts a percent of the damage from the original damage
   health -= damage; // Removes health
 
   cout << "You lost " << damage;
@@ -72,10 +72,7 @@ bool Hero::loss_health(float damage) // Mutator
   if (health <= 0) // If health is under 0
   {
     lose_game();
-    return false;  // Return to main to declare death
   }
-  else
-    return true; // Return to main survival
 }
 
 bool Hero::true_damage_loss(float damage)

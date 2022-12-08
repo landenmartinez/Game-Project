@@ -99,7 +99,8 @@ void Kreibach(Hero hero1, villain villain1)
   cout << "You travel down the hall passing ancient, unmoving doors and their beaconing contents. " << endl;
   cout << "Regardless of their invition, you pass partially because they are empty and partially because of the going sense of forboding it releases." << endl;
   cout << "Suddenly, you stop. To your left there lies a single rusty dagger and what looks like a health potion." << endl;
-  cout << "You gladly take the dagger, but you pause once you see the health potion. It's old, concerningly so. Its normal red"
+  cout << "You gladly take the dagger, but you pause once you see the health potion. It's old, concerningly so. It should be red but the crimson has long since turned to a dull << endl;
+
   while (hero1.getHealth() > 0 || villain1.getHealth())
     {
       
@@ -157,8 +158,8 @@ void Rhoten(Hero hero1, villain villain1)
   char choice;
   cout << "Finding just enough change to borrow a horse with saddle, you ride through an empty and dull grassland with enough sunshine that could dehydrate a lake. The horse, you named Lighter, suddenly refuses to step another hoove.\nLeaving no other choice, you decide to rest on a wall full of moss, which have seemed to attempt to backflow for more water.";
   hero1.gain_health(hero1.getHealth() / 2.50);  //The hero gains a near-third amount of health from resting.
-  cout << "After a few minutes of unwinding, a sudden gush of wind flows through and out of the moss next to you. Immediately, Lighter gallops through the hole the sudden wind opened. Knowing that you can't reach far without him, you quickly follow behind. You rush into a tunnel with only brushes of candles lighting your path. Looking behind you, you realize nothing's in sight. However, turning back around, you slam into something. It felt as it was the same size as you. Hitting the ground, you hear a sound that should've only came from you:\n";
-  cout << "";
+  cout << "After a few minutes of unwinding, a sudden gush of wind flows through and out of the moss next to you. Immediately, Lighter gallops through the hole the sudden wind opened. Knowing that you can't reach far without him, you quickly follow behind. You rush into a tunnel with only brushes of candles lighting your path. Looking behind you, you realize nothing's in sight. However, turning back around, you slam into something. It felt as it was the same size as you. You hit the ground and hear a sound that should've only came from you own mouth:\n";
+  cout << char(146) << "CK!";
 }
 
 void Son(Hero hero1, villain villain1) 
@@ -167,13 +168,14 @@ void Son(Hero hero1, villain villain1)
   int atktype = 0;
   int damage = 0;
   
-  cout << "It's a dark night, and you stumble upon a humid, kind-of gross swamp." << endl;
-  cout << "While you keep walking, you come across a very dark green patch of.. water?" << endl;
-  cout << "The 'water' slowly, slooowly starts to grow..." << endl;
-  cout << "As it grows, you realize that it's.. alive!? The weird lake monster groans and bubbles, and while you can't see it's face, you feel like you've disturbed it, somehow." << endl;
-  cout << "The monster rises to its full height, and it appears to be a sort of slime. But compared to normal slimes, it's super huge! And super angry..." << endl << endl;
-  cout << "You can feel the huge slime's anger radiating off of it. What will you do?" << endl;
-  cout << "1. Attack \t 2. Use Potiion \t 3. Check Stats" << endl;
+  cout << "It's a dark night, and you stumble upon a humid, kind-of gross swamp." << endl; //story
+  cout << "While you keep walking, you come across a very dark green patch of.. water?" << endl; //story
+  cout << "The 'water' slowly, slooowly starts to grow..." << endl; //story
+  cout << "As it grows, you realize that it's.. alive!? The weird lake monster groans and bubbles, and while you can't see it's face, you feel like you've disturbed it, somehow." << endl; //story
+  cout << "The monster rises to its full height, and it appears to be a sort of slime. But compared to normal slimes, it's super huge! And super angry..." << endl << endl; //story
+  cout << "You can feel the huge slime's anger radiating off of it. What will you do?" << endl; //story
+  
+  cout << "1. Attack \t 2. Use Potion \t 3. Check Stats \t 4. Run" << endl; //choices
   cin >> choice;
   switch (choice){
     case 1:
@@ -210,7 +212,7 @@ void Wells(Hero hero1, villain villain1)
 
   if (hero1.getSpeed() > villain1.getSpeed()) 
   {
-    if ()
+    if (heroAttackType == 1)
     
   }
 }

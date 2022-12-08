@@ -81,6 +81,7 @@ void Grilliot(Hero hero1, villain villain1)
 void Kreibach(Hero hero1, villain villain1) 
 {
   //Intro room
+  hero1.loss_health(25)
   cout << "Drip..." << endl << "Drip...";
   cout << "You gain consciously slowly, each drop of water a sliver of wakefullness returning." << endl;
   cout << "With a wretch of your eyes, you jolt upwards and begin scouring the room." << endl;
@@ -95,11 +96,23 @@ void Kreibach(Hero hero1, villain villain1)
   system("CLS");
 
   cout << "The hall, you decide, is even more eerie and drab, appearing to have been uninhabited for decades." << endl;
-  cout << "You are at the end of the hall, so there is only one direction to travel, forward" << endl;
+  cout << "You are at the end of the hall, so there is only one direction to travel, forward." << endl;
   cout << "You travel down the hall passing ancient, unmoving doors and their beaconing contents. " << endl;
   cout << "Regardless of their invition, you pass partially because they are empty and partially because of the going sense of forboding it releases." << endl;
   cout << "Suddenly, you stop. To your left there lies a single rusty dagger and what looks like a health potion." << endl;
-  cout << "You gladly take the dagger, but you pause once you see the health potion. It's old, concerningly so. It should be red but the crimson has long since turned to a dull brown << endl;
+  cout << "You gladly take the dagger, but you pause once you see the health potion. It's old, concerningly so." << endl;
+  cout << "It should be red but the crimson has long since turned to a dull brown, and you spy what appears to be a crack stoppered by its own dry contents." << endl;
+  cout << "You consider: should you take and drink the potion, you are stiff and injuried, or leave it for another decade. (y/n)" << endl;
+  char potion1;
+  cin >> potion1;
+  if (potion1 == 'y')
+    hero1.true_damage_loss(25);
+    cout << "You pick up the potion, take a brerath, and choke down the drink's contents. " << endl;
+    cout << "Immediately, you regret your choice. The potion clearly lost its healing property, and what remains feels acidic as it settles down your throat. " << endl;
+    cout << ""
+  else
+    
+
   while (hero1.getHealth() > 0 || villain1.getHealth())
     {
       
@@ -130,6 +143,7 @@ void Wofford(Hero hero1, villain villain1)
 void Woodworth(Hero hero1, villain villain1) 
 {
   int choice;
+  bool alive = true;
   cout << "You regain consciousness in a cave with one very large tree on an island surounded by crystal clear water." << endl;
   cout << "The lake surrounding the tree seems to be completly clear of fish. The tree in the middle is partialy covered in mushrooms." << endl;
   cout << "You realize you are very thirsty and could use a drink. Would you like to take a drink (1), Inspect the water(2), Atempt to swim across(3)";
@@ -146,7 +160,12 @@ void Woodworth(Hero hero1, villain villain1)
     cout << endl << "You inspect the water and see there seems to be nothing wrong with it, though you choose to play it safe." << endl;
     cout << "You take are about to sit down when you hear a noise come from in the water." << endl;
     cout << villain1.getName() << " jumps out of the water and hits you before you can react." << endl;
-    
+    alive = hero1.loss_health(20);
+    if (alive == false)
+    {
+      cout << "You feel the blow and black out" << endl;
+      cout << "You died before the fight even started how sad." << endl;
+    }
   case(3):
     
   }
@@ -155,10 +174,11 @@ void Woodworth(Hero hero1, villain villain1)
 void Rhoten(Hero hero1, villain villain1)
 {
   char choice;
-  cout << "Finding just enough change to borrow a horse with saddle, you ride through an empty and dull grassland with enough sunshine that could dehydrate a lake. The horse, you named Lighter, suddenly refuses to step another hoove.\nLeaving no other choice, you decide to rest on a wall full of moss, which have seemed to attempt to backflow for more water.";
+  cout << "Finding just enough change to borrow a horse with saddle, you ride through an empty and dull grassland with enough sunshine that could dehydrate a small lake. The horse, you named Lighter, suddenly refuses to step another hoove.\nLeaving no other choice, you decide to rest on a wall full of moss, which have seemed to attempt to backflow for more water.";
   hero1.gain_health(hero1.getHealth() / 2.50);  //The hero gains a near-third amount of health from resting.
-  cout << "After a few minutes of unwinding, a sudden gush of wind flows through and out of the moss next to you. Immediately, Lighter gallops through the hole the sudden wind opened. Knowing that you can't reach far without him, you quickly follow behind. You rush into a tunnel with only brushes of candles lighting your path. Looking behind you, you realize nothing's in sight. However, turning back around, you slam into something. It felt as it was the same size as you. You hit the ground and hear a sound that should've only came from you own mouth:\n";
-  cout << char(146) << "CK!";
+  cout << "After a few minutes of unwinding, a sudden gush of wind flows through and out of the moss next to you. Immediately, Lighter gallops through the hole the sudden wind opened. Knowing that you can't reach far without him, you quickly follow behind. You rush into a tunnel with only brushes of candles lighting your path. Looking behind you, you realize nothing's in sight. However, turning back around, you slam into something. It felt as the object was the same size as you. You hit the ground and hear a sound that should've only came from you own mouth:\n";
+  cout << char(146) << "CK!" << endl;
+  cout << "Silence... You don't see anything and don't want to stick around with the quiet; however, your inclination holds your ground. Still, nothing seems to be happening.";
 }
 
 void Son(Hero hero1, villain villain1) 
@@ -166,6 +186,9 @@ void Son(Hero hero1, villain villain1)
   int choice = 0;
   int atktype = 0;
   int damage = 0;
+  int run = 0;
+  dice struggle(100);
+  int strugres = 0;
   
   cout << "It's a dark night, and you stumble upon a humid, kind-of gross swamp." << endl; //story
   cout << "While you keep walking, you come across a very dark green patch of.. water?" << endl; //story
@@ -184,7 +207,27 @@ void Son(Hero hero1, villain villain1)
       damage = hero1.attack_h();
     else
       damage = hero1.attack_l();
+    break;
+    case 2:
+    hero1.h_potion();
+    break;
+    case 3:
+    cout << "Spd: " << int getSpeed() << "\t Def: " int getDefense() << "\n Str: " << int getStrength() << "\t HP: " << float getHealth();
+    break;
+    case 4:
+    cout << "The slime quickly reaches out to you, before you can even pick up your feet. Do you try to escape?" << endl;
+    cout << "1. Yes \t 2. No";
+    cin >> run;
+    if (run == 1){
+    strugres = struggle.roll();
+      if (strugres <= 34)
+        cout << "You successfully escape!";
+      else
+        
+    }
+    
   }
+  
 
 }
 
@@ -197,8 +240,14 @@ void Vincent(Hero hero1, villain villain1, int turnCounter)
 
     if (decision == 'Y')
     {
-      
+      hero1.loss_health(15);
+      cout << "The heat from the lava burns you as you approach" << hero1.getHealth();
     }
+  else
+    {
+      cout << "You keep walking and go deeper in the volcano";
+    }
+  
 }
 
 
@@ -206,12 +255,19 @@ void Wells(Hero hero1, villain villain1)
 {
   cout << "You are strolling through the woods when you happen upon a(n) villain! The villain tries to engage!" << endl;
   int heroAttackType;
+  float heroHeavy = hero1.attack_h();
+  float heroLight;
+  float heroLoseHealth;
+  float heroGainHealth;
   cout << "Would you like to heavy attack(1), which would deal a base of 10 damage to yourself, or light attack(2), which does nothing: ";
   cin >> heroAttackType;
 
   if (hero1.getSpeed() > villain1.getSpeed()) 
   {
     if (heroAttackType == 1)
+    {
+      hero1.attack_h();
+    }
     
   }
 }

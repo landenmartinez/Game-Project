@@ -1,5 +1,5 @@
-// Rylie Kreibach, Landon Martinez, Preston Wofford, Edwin Dye, Andrew Cotter,
-// Lily Grilliot //Hero December 6th, 2022
+// Rylie Kreibach, Landon Martinez, Preston Wofford, Edwin Dye, Andrew Cotter, Lily Grilliot 
+//Hero December 6th, 2022
 
 #ifndef _HERO_H
 #define _HERO_H

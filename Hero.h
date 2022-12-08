@@ -16,6 +16,7 @@ public:
   Hero(const int MAX_HP, int speed, int str, int def);
 
   bool loss_health(float damage);
+  bool true_damage_loss(float damage); //Loss health to true damage
   void gain_health(float hp_gain);
 
   void set_name(string name);
@@ -66,6 +67,21 @@ bool Hero::loss_health(float damage) // Mutator
   damage = damage - (damage * defense); // Subtracts a percent of the damage from the original damage
   health -= damage; // Removes health
 
+  cout << "You lost " << damage;
+
+  if (health <= 0) // If health is under 0
+  {
+    lose_game();
+    return false;  // Return to main to declare death
+  }
+  else
+    return true; // Return to main survival
+}
+
+bool Hero::true_damage_loss(float damage)
+{
+  health = health - damage;
+  
   cout << "You lost " << damage;
 
   if (health <= 0) // If health is under 0

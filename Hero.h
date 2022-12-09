@@ -67,7 +67,7 @@ void Hero::loss_health(float damage) // Mutator
   damage -= (damage * loss); // Subtracts a percent of the damage from the original damage
   health -= damage; // Removes health
 
-  cout << "You lost " << damage;
+  cout << "You lost " << damage << " health points." << endl;
 
   if (health <= 0) // If health is under 0
   {
@@ -79,7 +79,7 @@ bool Hero::true_damage_loss(float damage)
 {
   health = health - damage;
   
-  cout << "You lost " << damage;
+  cout << "You lost " << damage << "health points." << endl;
 
   if (health <= 0) // If health is under 0
   {
@@ -184,6 +184,7 @@ void Hero::h_potion() {
   if (health_potions != 0) {
     gain_health(50);
     --health_potions;
+    cout << "You gained 50 health points. " << endl;
   } 
   else 
     cout << "You have no more health potions left." << endl;
@@ -196,7 +197,7 @@ void Hero::gain_potion()
 
 void Hero::lose_game() 
 {
-  cout << "You died, get good." << endl << endl;
+  cout << endl << endl << "You died, get good." << endl << endl;
 }
 
 // Crit Chance Calculator

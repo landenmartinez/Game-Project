@@ -15,6 +15,8 @@ public:
     float takeDamage(float heroAttack);//mutator
     float getSpeed();
     float getHealth();
+    float getDefense();
+    float getStrength();
     string getName();
     void set_name(string name);
 private:
@@ -43,7 +45,7 @@ float villain::attack() //Modifier
 
 float villain::takeDamage(float heroAttack) //Modifier
 {
-    float taken = heroAttack * defense; //Figuring the damage to be taken
+    float taken = heroAttack * (defense/100); //Figuring the damage to be taken
     health -= taken;    //Subtracting from the health
 
     if (health > 0)
@@ -66,6 +68,14 @@ float villain::getSpeed()//returns the villains speed
 float villain::getHealth()
 {
   return health;
+}
+
+float villain::getDefense() {
+    return defense;
+}
+
+float villain::getStrength() {
+    return strength;
 }
 
 string villain::getName()

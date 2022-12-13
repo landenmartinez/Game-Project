@@ -1,6 +1,5 @@
-// Rylie Kreibach, Landon Martinez, Preston Wofford, Edwin Dye, Andrew Cotter, Lily Grilliot 
-// Hero Class
-// December 6th, 2022
+// Rylie Kreibach, Landon Martinez, Preston Wofford, Edwin Dye, Andrew Cotter,
+// Lily Grilliot Hero Class December 6th, 2022
 
 #ifndef _HERO_H
 #define _HERO_H
@@ -17,10 +16,10 @@ public:
   Hero(const int MAX_HP, int speed, int str, int def);
 
   void loss_health(float damage);
-  bool true_damage_loss(float damage); //Loss health to true damage
+  bool true_damage_loss(float damage); // Loss health to true damage
   void gain_health(float hp_gain);
 
-  void set_name(string name);
+  void set_name(string n);
   int attack_h();  // Heavy attack
   int attack_l();  // Light attack
   void h_potion(); // Use health potion
@@ -54,18 +53,20 @@ private:
 
 // Hero Constructor - establishes character stats
 Hero::Hero(const int MAX_HP, int speed, int str, int def)
-    : MAX_HEALTH(MAX_HP), health(float(MAX_HP)), speed(speed),
-      strength(str), defense(def), attack(5), crit_c(12),
-      hit_chance(100) { /*blank*/
+    : MAX_HEALTH(MAX_HP), health(float(MAX_HP)), speed(speed), strength(str),
+      defense(def), attack(5), crit_c(12), hit_chance(100) { /*blank*/
 }
 
 // Health Loss Mutator
 void Hero::loss_health(float damage) // Mutator
 {
   // Receives parameter concerning how much health is lost then applies it
-  float loss = defense / 100; // Converts defense to percent (10 def = 10% reduction)
-  damage -= (damage * loss); // Subtracts a percent of the damage from the original damage
-  health -= damage; // Removes health
+  float reduction =
+      defense / 100; // Converts defense to percent (10 def = 10% reduction)
+  float wound =
+      (damage *
+       reduction); // Subtracts a percent of the damage from the original damage
+  health -= wound; // Removes health
 
   cout << "You lost " << damage << " health points." << endl;
 
@@ -75,18 +76,16 @@ void Hero::loss_health(float damage) // Mutator
   }
 }
 
-bool Hero::true_damage_loss(float damage)
-{
+bool Hero::true_damage_loss(float damage) {
   health = health - damage;
-  
-  cout << "You lost " << damage << "health points." << endl;
+
+  cout << "You lost " << damage << "  health points." << endl;
 
   if (health <= 0) // If health is under 0
   {
     lose_game();
-    return false;  // Return to main to declare death
-  }
-  else
+    return false; // Return to main to declare death
+  } else
     return true; // Return to main survival
 }
 
@@ -99,23 +98,23 @@ void Hero::gain_health(float hp_gain) // Mutator
     health = MAX_HEALTH;
 }
 
-void Hero::set_name(string name)  //Mutator
+void Hero::set_name(string n) // Mutator
 {
-  name = name;
+  name = n;
 }
 
 // Heavy Attack function
 int Hero::attack_h() // Heavy attack
 {
-  int damage;       // Holds damage value and return
-  bool crit;        // Crit chance happened? T/F
+  int damage; // Holds damage value and return
+  bool crit;  // Crit chance happened? T/F
   int chance; // Temporary holds on dice rolls
   float temp;
 
   chance = hit_chance.roll(); // Roll 100 to see if hit or miss
   if (chance <= 35)           // Find if hit missed - 65% hit chance
   {
-    cout << "You missed." << endl;
+    cout << "You missed." << endl << endl;
     damage = 0; // Set damage to 0 to return no damage
   } else {
     crit = crit_chance(); // Call function and see crit yes or no
@@ -153,7 +152,7 @@ int Hero::attack_l() // Light attack
 
   if (chance <= 10) // 90% hit chance
   {
-    cout << "You missed." << endl;
+    cout << "You missed." << endl << endl;
     damage = 0;
   } else {
     crit = crit_chance(); // Call function and see if true or false
@@ -185,24 +184,18 @@ void Hero::h_potion() {
     gain_health(50);
     --health_potions;
     cout << "You gained 50 health points. " << endl;
-  } 
-  else 
+  } else
     cout << "You have no more health potions left." << endl;
 }
 
-void Hero::gain_potion()
-{
-  ++health_potions;
-}
+void Hero::gain_potion() { ++health_potions; }
 
-void Hero::lose_game() 
-{
+void Hero::lose_game() {
   cout << endl << endl << "You died, get good." << endl << endl;
 }
 
 // Crit Chance Calculator
-bool Hero::crit_chance() // Returns news of application to the calling attack
-                         // function
+bool Hero::crit_chance() // Returns news of application to the calling attack function
 {
   if (crit_c.roll() == 1) // 8% percent chance
     return true;          // doubles attack if applies

@@ -4,6 +4,9 @@
 #include "Hero.h"    // Hero header File
 #include "villain.h" // Villian header File
 #include <iostream>
+#include <cstdlib>
+#include <stdlib.h>
+//#include <windowns.h> //Does not work in replit
 using namespace std;
 
 /* * * * * * START OF PEOPLE FUNCTIONS * * * * * * */
@@ -21,11 +24,13 @@ void Vincent(Hero hero1, villain villain1, int turnCounter);
 void Wells(Hero hero1, villain villain1);
 void Garrelts(Hero hero1, villain villain1);
 void battle(Hero hero1, villain villain1);
+//void aniOut(string output); //A function to animate outputed text provided by yours truely :) - Landen M.  //Does not work in replit
+
 /* * * * * * * END OF PEOPLE FUNCTIONS * * * * * * * */
 
 int main() {
-  Hero hero1(100, 15, 40, 8);
-  villain villain1(200, 10, 37, 6); //Health, speed, strength, defense
+  Hero hero1(100, 15, 10, 8);
+  villain villain1(200, 100, 1700000000, 6); //Health, speed, strength, defense
   int turnCounter = 0;
   // peanut butter jelly
 
@@ -60,21 +65,15 @@ int main() {
 }
 
 void Martinez(Hero hero1, villain villain1) {
-  string name;
-  cout << "Welcome to the new world, what is your name? ";
-  cin >> name;
-  hero1.set_name(name);
-  cout << "Hello, " << name << endl;
-  cout << "You are tasked with defeating multiple foes in order to gain access "
-          "to the rest of this world and enjoy paradise." << endl;
-  
 }
 
 void Cotter(Hero hero1, villain villain1) 
 {
-  villain goblin(45, 7, 15, 1)
+  villain goblin(45, 7, 15, 10);
   cout << "As you leave the Castle of Nindriel, you gather supplies and begin your journey. Go, " << hero1.getName() << ", and leave for the outside world!\n";
-  cout << endl << "";
+  cout << endl << "As you journey out, the path is quiet and well-tread. Soon, you encounter an odd, green thing. As you approach, you discover it's an angry goblin looking for a fight!\n";
+  battle(hero1, goblin);
+  cout << endl << "The goblin falls, but suddenly..." << endl << "BONK!" << endl << "As you fade to black, you see some... thing... carrying you off into a cave nearby.\n";
 }
 
 void Dye(Hero hero1, villain villain1) 
@@ -97,7 +96,7 @@ void Dye(Hero hero1, villain villain1)
   
 cout << "(3.) You choose the gravel path, this path has plants that will be useful for later, you take a handful of all sorts of plants. You manage to make a healing potion. After a while of walking and wondering, you encounter an enemy.";//insert battle function
 
-battle();
+battle(hero1, villain1);
 }
 
 void Grilliot(Hero hero1, villain villain1) {
@@ -109,8 +108,7 @@ void Grilliot(Hero hero1, villain villain1) {
   float healthH = Jane.getHealth();    //hero health
   bool gameOn = true;                  //bool from true_damage_loss function
   //Background
-  cout << "You are the most sought after healer in the kingdom. Your name is ";
-  hero1.set_name("Jane");
+  cout << "You are the most sought after healer in the kingdom.";
   cout << "The Highcrest villagers were kind to you. Having a bonfire in honor of you healing their increasingly "            "sickly chief" << endl;
   cout << "Sadly, you had to continue. The Newburgh villagers on the other side of the forest have requested your "           "help." << endl;
   cout << "A sick child needs your help in the next village and their time is running short each day you take to "            "get there." << endl;
@@ -600,325 +598,369 @@ void Woodworth(Hero hero1, villain villain1)
 
 void Rhoten(Hero hero1, villain villain1) {
 
-  dice chance_descript(20); // Creates a dice object to roll the probability of knowing more of the creature.
-  Hero buffed_Hero(100, 5, 5, 5);  //Declares the buffed_Hero class object to be changed and used later if the user makes a specific choice.
-  int choice;
-  bool is_knife = 0;
-  cout
-      << "Finding just enough change to borrow a horse with saddle, you ride "
-         "through an empty and dull grassland with enough sunshine that "
-         "could "
-         "dehydrate a small lake. The horse, you named Lighter, suddenly "
-         "refuses to step another hoove.\nLeaving no other choice, you "
-         "decide "
-         "to rest on a wall full of moss, which have seemed to attempt to "
-         "backflow for more water.";
-  hero1.gain_health(
-      hero1.getHealth() /
-      2.50); // The hero gains a near-third amount of health from resting.
-  system("pause");
-  cout << "After a few minutes of unwinding, a sudden gust of wind flows "
-          "through and out of the moss next to you. Immediately, Lighter "
-          "gallops through the hole the sudden wind opens. Knowing that you "
-          "can't reach far without him, you quickly follow behind. You rush "
-          "into a tunnel with only brushes of candles lighting your path. "
-          "Looking behind you, you realize nothing's in sight. However, "
-          "turning back around, you slam into something. It felt as if the "
-          "object was the same size as you. You hit the ground and hear a "
-          "sound that should've only came from you own mouth:\n";
-  cout << char(146) << "CK!" << endl;
-  cout << "Silence... All you feel is the blow of the wind. You don't see "
-          "anything and don't want to stick around "
-          "with the quiet; however, your inclination holds your ground. "
-          "Still, "
-          "nothing seems to be happening.\n";
-  cout << "You cut to your mind and think of three choices:" << endl
-       << "1. Pull your melee out \t 2. Call out for Lighter \t 3. Do "
-          "nothing\n";
-  cout << "You've decided to go with choice #";
-  cin >> choice;
-  if (choice == 1) {
+    dice chance_descript(20); // Creates a dice object to roll the probability of knowing more of the creature.
+    Hero buffed_Hero(100, 5, 5, 5);  //Declares the buffed_Hero class object to be changed and used later if the user makes a specific choice.
+    int choice;
+    bool is_knife = 0;
     cout
-        << "\nYou pull your weapon. It rings a tune of keen defense. Nothing "
-           "approaches.\n\n";
-  } else if (choice == 2) {
+        << "Finding just enough change to borrow a horse with saddle, you ride "
+        "through an empty and dull grassland with enough sunshine that "
+        "could "
+        "dehydrate a small lake. The horse, you named Lighter, suddenly "
+        "refuses to step another hoove.\nLeaving no other choice, you "
+        "decide "
+        "to rest on a wall full of moss, which have seemed to attempt to "
+        "backflow for more water.\n\n";
+    hero1.gain_health(hero1.getHealth() / 2.50); // The hero gains a near-third amount of health from resting.
+    system("pause");
+    cout << "After a few minutes of unwinding, a sudden gust of wind flows "
+        "through and out of the moss next to you. Immediately, Lighter "
+        "gallops through the hole the sudden wind opens. Knowing that you "
+        "can't reach far without him, you quickly follow behind. You rush "
+        "into a tunnel with only brushes of candles lighting your path. "
+        "Looking behind you, you realize nothing's in sight. However, "
+        "turning back around, you slam into something. It felt as if the "
+        "object was the same size as you. You hit the ground and hear a "
+        "sound that should've only came from you own mouth:\n";
+    cout << char(146) << "CK!" << endl << endl;
+    system("pause");
+    cout << "Silence... All you feel is the blow of the wind. You don't see "
+        "anything and don't want to stick around "
+        "with the quiet; however, your inclination holds your ground. "
+        "Still, "
+        "nothing seems to be happening.\n";
+    cout << "You cut to your mind and think of three choices:" << endl
+        << "1. Pull your melee out \t\t 2. Call out for Lighter \t\t 3. Do nothing\n";
+    cout << "You've decided to go with choice #";
+    cin >> choice;
+    if (choice == 1) {
+        cout
+            << "\nYou pull your weapon. It rings a tune of keen defense. Nothing "
+            "approaches.\n\n";
+    }
+    else if (choice == 2) {
+        cout
+            << "\nYou call out your horse's name: \"LIGHTER!\" Although Lighter "
+            "is "
+            "needed for the resumption of journey, a sense of deplore strikes "
+            "through your mind as this could've gave away your unwanted "
+            "entry.\n\n";
+    }
+    else if (choice == 3)
+    {
+        cout
+            << "\nSometimes doing nothing is the best preparation, you thought "
+            "to "
+            "yourself. A few minutes of your life passes in a dim and ominous "
+            "tunnel.\n\n";
+    }
+    else
+    {
+        cout << "\nYou've scratched the thoughts out of your head and decided to keep walking forward instead.\n\n";
+    }
+    system("pause");
+    system("CLS");
     cout
-        << "\nYou call out your horse's name: \"LIGHTER!\" Although Lighter "
-           "is "
-           "needed for the resumption of journey, a sense of deplore strikes "
-           "through your mind as this could've gave away your unwanted "
-           "entry.\n\n";
-  } 
-  else if (choice == 3) 
-  {
-    cout
-        << "\nSometimes doing nothing is the best preparation, you thought "
-           "to "
-           "yourself. A few minutes of your life passes in a dim and ominous "
-           "tunnel.\n\n";
-  } 
-  else 
-  {
-    cout << "\nYou've scratched the thoughts out of your head and decided to keep walking forward instead.\n\n";
-  }
-  system("pause");
-  system("CLS");
-  cout
-      << "A loud neigh comes from the direction your horse ran to. Repulsing "
-         "some time to consider your choices, you start sprinting. As you continue to hear the calls from your campanion, strings of dangling moss start to appear. You point your "
-         "melee's blade ahead of you. It cuts through some of the moss you encounter as you dash, nearing the new shade of light that gleamed onto your weapon.\n"
-         "You've reached the end of the tunnel and step into a gray scale of open space. The breeze seemed to fade away, and you take a moment to look around you.\n"
-         "The flooring is filled with dark and crumpled concrete, reflecting "
-         "the background of the symbols scattered across it. Some brewing stands are propped outside of the symbols' pattern. You see no sign of your horse. Despite this, you see a "
-         "shine out of the corner of your eye. As you turn and walk to it, the bright light forms into a knife. The knife's handle is colored turquoise, with a bright pink giving the "
-         "appearance of the blade. It sits on a wooden table with a couple unknown potions positioned around.";
-  cout << "[Do you want to pick up the knife? 1 for yes, 0 for no]: ";
-  cin >> is_knife;
-  if (is_knife == 1) 
-  {
-    cout << "\nYou pick up the knife and a rush of energy fills your body. "
+        << "A loud neigh comes from the direction your horse ran to. Repulsing "
+        "some time to consider your choices, you start sprinting. As you continue to hear the calls from your campanion, strings of dangling moss start to appear. You point your "
+        "melee's blade ahead of you. It cuts through some of the moss you encounter as you dash, nearing the new shade of light that gleamed onto your weapon.\n"
+        "You've reached the end of the tunnel and step into a gray scale of open space. The breeze seemed to fade away, and you take a moment to look around you.\n"
+        "The flooring is filled with dark and crumpled concrete, reflecting "
+        "the background of the symbols scattered across it. Some brewing stands are propped outside of the symbols' pattern. You see no sign of your horse. Despite this, you see a "
+        "shine out of the corner of your eye. As you turn and walk to it, the bright light forms into a knife. The knife's handle is colored turquoise, with a bright pink giving the "
+        "appearance of the blade. It sits on a wooden table with a couple unknown potions positioned around.\n";
+    cout << "[Do you want to pick up the knife? 1 for yes, 0 for no]: ";
+    cin >> is_knife;
+    if (is_knife == 1)
+    {
+        cout << "\nYou pick up the knife and a rush of energy fills your body. "
             "Your vision, strength, and mobility increased with this new "
             "feeling of vitality!\n\n";
-    Hero buffed_Hero(hero1.getHealth(), hero1.getSpeed() + 2, hero1.getStrength() + 3, hero1.getDefense());
-  } 
-  else 
-  {
-    cout << "\nYou decided not to pick up the knife\n\n";
-  }
-  cout
-      << "Looking up ahead of you, you see a red, black, and white figure, standing ahead of two doors. It's posture and height is the same as a human's. The pointed claws of the "
-         "creature glisten of light grey. A black bag in the shape of an envelope rests on its right thigh with a handle looping around the neck of the bod. A red witch hat covers most " 
-         "of the fur on its head. You struggle to see the behind of the figure as its black cape blocks the sight. ";
-  if (chance_descript.roll() == 17) 
-  {
-    cout << "However, thanks to a book you've read in your journey, you've noticed that the creature is a  \n";
-  }
-  else 
-  {
-    cout << "You cannot recall a species similar to what you see...\n";
-  }
-  system("pause");
-  cout << "For a second time, your mind rushes for more choices:\n" << "1. Ask for a name \t 2. Threaten \t 3. Attempt to walk away";
-  cout << "You decided, in a second, to go with #";
-  cin >> choice;
-
-  system("CLS");
-  if (choice == 1)
-  {
-    cout << "\n\"What's your name?\" you shouted.\n The voice that follows from the direction of the creature was as if wind was pushed through a wicker, \"I shall follow. A well placed conversation with your demise is a good choice... My name's Ruby.\" You tell yours.";
-    cout << "\n\"You're on a adventure are you? Well I'm sorry, but it must have an ending! And it can't always go your way.\"\n";
-  }
-  else if (choice == 2)
-  {
-    cout << "\nYou threaten the creature, daring the creature to take a step closer. He does, smiling.\n";
-  }
-  else if (choice == 3)
-  {
-    cout << "Without saying anything and keeping both eyes away from it, you walk towards the doors behind the creature. However, you are (painfully) shoved by the claws of the creature. You hear a voice coming from the mouth of the creature as if it was pushed through a wicker, \"I'm glad you've made that decision.\"";
-  }
-  else
-  {
-    cout << "\nYou open your mouth to communicate, but the creature promptly speaks first.\n";
-    cout << "\"No need for the complexity of conversation.\" The voice spoken was as if wind was pushed through a wicker. \"It's a simple as, \'You cannot leave here after what you saw!\'"
-            "And Ruby's in a hurry.\"\n";
-  }
-  system("pause");
-
-  int action;       // Action choice for hero
-  int damage;       // Action damage
-  int end_game = 0; // variable to enter exit(1);
-
-
-  if (is_knife == 1)
-  {
-    if (buffed_Hero.getSpeed() >= villain1.getSpeed()) // Find which character attacks first
-    {
-      while (buffed_Hero.getHealth() > 0 || villain1.getHealth() > 0) // While a character
-      {
-        cout << "Your health: " << buffed_Hero.getHealth() << endl;
-        cout << "Enemy's health: " << villain1.getHealth() << endl << endl;
-
-        cout << "Select your action: \n  1. light attack \t 2. heavy attack \t 3. health potion" << endl;
-        cin >> action;
-        switch (action) {
-        case (1):
-          damage = buffed_Hero.attack_l();
-          villain1.takeDamage(damage);
-          break;
-        case (2):
-          damage = buffed_Hero.attack_h();
-          villain1.takeDamage(damage);
-          break;
-        case (3):
-          buffed_Hero.h_potion();
-          break;
-        }
-
-        damage = villain1.attack();
-        buffed_Hero.loss_health(damage);
-      }
-    } 
-    else 
-    {
-      while (buffed_Hero.getHealth() > 0 || villain1.getHealth() > 0) 
-      {
-        cout << "Your health: " << buffed_Hero.getHealth() << endl;
-        cout << "Enemy's health: " << villain1.getHealth() << endl << endl;
-
-        damage = villain1.attack();
-        buffed_Hero.loss_health(damage);
-
-        cout << "Select your action: \n  1. light attack \n  2. heavy attack\n 3. health potion" << endl;
-        cin >> action;
-        switch (action) 
-        {
-        case (1):
-          damage = buffed_Hero.attack_l();
-          villain1.takeDamage(damage);
-          break;
-        case (2):
-          damage = buffed_Hero.attack_h();
-          villain1.takeDamage(damage);
-          break;
-        case (3):
-          buffed_Hero.h_potion();
-          break;
-        }
-      }
+        Hero buffed_Hero(hero1.getHealth(), hero1.getSpeed() + 4, hero1.getStrength() + 6, hero1.getDefense());
     }
-    if (buffed_Hero.getHealth() > villain1.getHealth()) 
+    else
     {
-      cout << "The enemy falls to its knees." << endl;
-    } 
-    else 
+        cout << "\nYou decided not to pick up the knife\n\n";
+    }
+    system("pause");
+    cout << "Looking up ahead of you, you see a red, black, and white figure, standing ahead of two doors. It's posture and height is the same as a human's. The pointed claws of the "
+        "creature glisten of light grey. A black bag in the shape of an envelope rests on its right thigh with a handle looping around the neck of the bod. A red witch hat covers most "
+        "of the fur on its head. You struggle to see the behind of the figure as its black cape blocks the sight. ";
+    if (chance_descript.roll() == 17)
     {
-      while (end_game != 1) // Techniquely an infinite loop, but it ends when the correct item is entered because it closes down the program period.
-      {
-        cout << "Your eyes close for the final time. Enter 1 to close the program." << endl;
-        cin >> end_game;
-        if (end_game == 1) 
-        {
-          exit(1);
-        }
-      }
+        cout << "However, thanks to a book you've read in your journey, you've noticed that the creature is a wickerbeast, a creature with the surface of wicker-like scales with hardly any pupils in their large eyes and horns pointing out from the front and sides of the head. They are known for being cuddly.\n";
+    }
+    else
+    {
+        cout << "You cannot recall a species similar to what you see...\n\n";
+    }
+    system("pause");
+    cout << "For a second time, your mind rushes for more choices:\n" << "1. Ask for a name \t 2. Threaten \t 3. Attempt to walk away\n";
+    cout << "You decided, in a second, to go with #";
+    cin >> choice;
+
+    system("CLS");
+    if (choice == 1)
+    {
+        cout << "\n\"What's your name?\" you shouted.\n The voice that follows from the direction of the creature was as if wind was pushed through a wicker, \"I shall follow. A well placed conversation with your demise is a good choice... My name's Ruby.\" You tell yours.";
+        cout << "\n\"You're on a adventure are you? Well I'm sorry, but it must have an ending! And it can't always go your way.\"\n\n";
+    }
+    else if (choice == 2)
+    {
+        cout << "\nYou threaten the creature, daring the creature to take a step closer. He does, smiling.\n\n";
+    }
+    else if (choice == 3)
+    {
+        cout << "Without saying anything and keeping both eyes away from it, you walk towards the doors behind the creature. However, you are (painfully) shoved by the claws of the creature. You hear a voice coming from the mouth of the creature as if it was pushed through a wicker, \"I'm glad you've made that decision for Ruby.\"\n\n";
+    }
+    else
+    {
+        cout << "\nYou open your mouth to communicate, but the creature promptly speaks first.\n";
+        cout << "\"No need for the complexity of conversation.\" The voice spoken was as if wind was pushed through a wicker. \"It's a simple as, \'You cannot leave here after what you saw!\' And Ruby's in a hurry.\"\n\n";
     }
     system("pause");
     system("CLS");
-  }
-  else
-  {
-    if (hero1.getSpeed() >= villain1.getSpeed()) // Find which character attacks first
+
+    int action;       // Action choice for hero
+    int damage;       // Action damage
+    int end_game = 0; // variable to enter exit(1);
+    bool again = true;  //Variable for while loop to see if someone died yet.
+
+    if (is_knife == 1)
     {
-      while (hero1.getHealth() > 0 || villain1.getHealth() > 0) // While a character
-      {
-        cout << "Your health: " << hero1.getHealth() << endl;
-        cout << "Enemy's health: " << villain1.getHealth() << endl << endl;
-
-        cout << "Select your action: \n  1. light attack \t 2. heavy attack \t 3. health potion" << endl;
-        cin >> action;
-        switch (action) {
-        case (1):
-          damage = hero1.attack_l();
-          villain1.takeDamage(damage);
-          break;
-        case (2):
-          damage = hero1.attack_h();
-          villain1.takeDamage(damage);
-          break;
-        case (3):
-          hero1.h_potion();
-          break;
-        }
-
-        damage = villain1.attack();
-        hero1.loss_health(damage);
-      }
-    } 
-    else 
-    {
-      while (hero1.getHealth() > 0 || villain1.getHealth() > 0) 
-      {
-        cout << "Your health: " << hero1.getHealth() << endl;
-        cout << "Enemy's health: " << villain1.getHealth() << endl << endl;
-
-        damage = villain1.attack();
-        hero1.loss_health(damage);
-
-        cout << "Select your action: \n  1. light attack \n  2. heavy attack\n 3. health potion" << endl;
-        cin >> action;
-        switch (action) 
+        if (buffed_Hero.getSpeed() >= villain1.getSpeed()) // Find which character attacks first
         {
-        case (1):
-          damage = hero1.attack_l();
-          villain1.takeDamage(damage);
-          break;
-        case (2):
-          damage = hero1.attack_h();
-          villain1.takeDamage(damage);
-          break;
-        case (3):
-          hero1.h_potion();
-          break;
+            while (again) // While a character is still alive.
+            {
+                cout << "Your health: " << buffed_Hero.getHealth() << endl;
+                cout << "Enemy's health: " << villain1.getHealth() << endl << endl;
+
+                cout << "Select your action: \n  1. light attack \t 2. heavy attack \t 3. health potion" << endl;
+                cin >> action;
+                switch (action) 
+                {
+                    case (1):
+                        damage = buffed_Hero.attack_l();
+                        villain1.takeDamage(damage);
+                        break;
+                    case (2):
+                        damage = buffed_Hero.attack_h();
+                        villain1.takeDamage(damage);
+                        break;
+                    case (3):
+                        buffed_Hero.h_potion();
+                        break;
+                }
+
+                damage = villain1.attack();
+                buffed_Hero.loss_health(damage);
+                cout << endl;
+
+                if (hero1.getHealth() <= 0)//If a character has died
+                {
+                    again = false; //End battle loop
+                }
+                if (villain1.getHealth() <= 0)
+                {
+                    again = false; //End battle loop
+                }
+            }
         }
-      }
-    }
-    if (hero1.getHealth() > villain1.getHealth()) 
-    {
-      cout << "The enemy falls to its knees." << endl;
-    } 
-    else 
-    {
-      while (end_game != 1) // Techniquely an infinite loop, but it ends when the correct item is entered because it closes down the program period.
-      {
-        cout << "Your eyes close for the final time. Enter 1 to close the program." << endl;
-        cin >> end_game;
-        if (end_game == 1) 
+        else
         {
-          exit(1);
+            while (again)
+            {
+                cout << "Your health: " << buffed_Hero.getHealth() << endl;
+                cout << "Enemy's health: " << villain1.getHealth() << endl << endl;
+
+                damage = villain1.attack();
+                buffed_Hero.loss_health(damage);
+
+                cout << "Select your action: \n  1. light attack \t 2. heavy attack \t 3. health potion" << endl;
+                cin >> action;
+                switch (action)
+                {
+                case (1):
+                    damage = buffed_Hero.attack_l();
+                    villain1.takeDamage(damage);
+                    break;
+                case (2):
+                    damage = buffed_Hero.attack_h();
+                    villain1.takeDamage(damage);
+                    break;
+                case (3):
+                    buffed_Hero.h_potion();
+                    break;
+                }
+
+                cout << endl;
+
+                if (hero1.getHealth() <= 0)//If a character has died
+                {
+                    again = false; //End battle loop
+                }
+                if (villain1.getHealth() <= 0)
+                {
+                    again = false; //End battle loop
+                }
+            }
         }
-      }
+        if (buffed_Hero.getHealth() > villain1.getHealth())
+        {
+            cout << "The enemy falls." << endl;
+        }
+        else
+        {
+            while (end_game != 1) // Techniquely an infinite loop, but it ends when the correct item is entered because it closes down the program period.
+            {
+                cout << "Your eyes close for the final time. Enter 1 to close the program." << endl;
+                cin >> end_game;
+                if (end_game == 1)
+                {
+                    exit(1);
+                }
+            }
+        }
+        system("pause");
+        system("CLS");
     }
+    else
+    {
+        if (hero1.getSpeed() >= villain1.getSpeed()) // Find which character attacks first
+        {
+            while (again) // While both character are still alive.
+            {
+                cout << "Your health: " << hero1.getHealth() << endl;
+                cout << "Enemy's health: " << villain1.getHealth() << endl << endl;
+
+                cout << "Select your action: \n  1. light attack \t 2. heavy attack \t 3. health potion" << endl;
+                cin >> action;
+                switch (action)
+                {
+                    case (1):
+                        damage = hero1.attack_l();
+                        villain1.takeDamage(damage);
+                        break;
+                    case (2):
+                        damage = hero1.attack_h();
+                        villain1.takeDamage(damage);
+                        break;
+                    case (3):
+                        hero1.h_potion();
+                        break;
+                }
+
+                damage = villain1.attack();
+                hero1.loss_health(damage);
+
+                cout << endl;
+
+                if (hero1.getHealth() <= 0)//If a character has died
+                {
+                    again = false; //End battle loop
+                }
+                if (villain1.getHealth() <= 0)
+                {
+                    again = false; //End battle loop
+                }
+            }
+        }
+        else
+        {
+            while (again)
+            {
+                cout << "Your health: " << hero1.getHealth() << endl;
+                cout << "Enemy's health: " << villain1.getHealth() << endl << endl;
+
+                damage = villain1.attack();
+                hero1.loss_health(damage);
+
+                cout << "Select your action: \n  1. light attack \t  2. heavy attack \t 3. health potion" << endl;
+                cin >> action;
+                switch (action)
+                {
+                case (1):
+                    damage = hero1.attack_l();
+                    villain1.takeDamage(damage);
+                    break;
+                case (2):
+                    damage = hero1.attack_h();
+                    villain1.takeDamage(damage);
+                    break;
+                case (3):
+                    hero1.h_potion();
+                    break;
+                }
+                cout << endl;
+
+                if (hero1.getHealth() <= 0)//If a character has died
+                {
+                    again = false; //End battle loop
+                }
+                if (villain1.getHealth() <= 0)
+                {
+                    again = false; //End battle loop
+                }
+            }
+        }
+        if (villain1.getHealth() <= 0)
+        {
+            cout << "The enemy falls." << endl;
+        }
+        else
+        {
+            while (end_game != 1) // Techniquely an infinite loop, but it ends when the correct item is entered because it closes down the program period.
+            {
+                cout << "Your eyes close for the final time. Enter 1 to close the program." << endl;
+                cin >> end_game;
+                if (end_game == 1)
+                {
+                    exit(1);
+                }
+            }
+        }
+        system("pause");
+        system("CLS");
+    }
+    cout << "You've taken Ruby down, or so for a bit. As you took a moment to breathe and lick your wounds, it took you a minute to notice he was mixing a potion under his cape.\n";
+    cout << "Your entire body rushes to stop him, but it's too late. Ruby throws a potion among your ground and it hurts to the excent of paralization. Emitting laughs from the coughing, Ruby utters \"I would pity one, but rushing into somebody else's path will always pay a life for a price\"\n";
+    system("pause");
+    if (is_knife == 1)
+    {
+        cout << "He reaches and takes the purple knife from your inventory, weaking your muscles as it was pulled away from your stretch.\n";
+        cout << "\"You know, this was engineered by a robot, specifically designed to increase the gore left of the victim. And you didn't think of using it? Too bad, it wouldn't have harmed me!\"\n\n";
+    }
+    else
+    {
+        cout << "He hobbles over to the wooden table with the purple knife on it. Then, without hesitation, he grabs the knife and bundles himself towards you.\n\n";
+    }
+
+    cout << "He lifts the knife...\n";
     system("pause");
     system("CLS");
-  }
-  cout << "You've taken Ruby down, or so for a bit. As you took a moment to breathe and lick your wounds, it took you a minute to notice he was mixing a potion under his cape.\n";
-  cout << "Your entire body rushes to stop him, but it's too late. Ruby throws a potion among your ground and it hurts to the excent of paralization. Emitting laughs from the coughing, Ruby utters \"I would pity one, but rushing into somebody else's path will always pay a life for a price\"\n";
-  system("pause");
-  if (is_knife == 1)
-  {
-    cout << "He reaches and takes the purple knife from your inventory, weaking your muscles as it was pulled away from your stretch.\n";
-    cout << "\"You know, this was engineered by a robot, specifically designed to increase the gore left of the victim. And you didn't think of using it? Too bad, it wouldn't have harmed me!\"\n\n";
-  }
-  else
-  {
-    cout << "He hobbles over to the wooden table with the purple knife on it. Then, without hesitation, he grabs the knife and bundles himself towards you.\n\n";
-  }
+    cout << "____________    ____       ___       ____          _         ____      ___       ________       \n";
+    cout << "------------     ----      ---      ----          ---        -----     ---      ----------      \n";
+    cout << "    |||           ----     ---     ----          -- --       ------    ---     ---              \n";
+    cout << "    |||            ----    ---    ----          --   --      -------   ---    ---    -----      \n";
+    cout << "    |||             ---- - --- - ----          ---------     ---  ---  ---   ----     ---       \n";
+    cout << "    |||              ----------------         -----------    ---   --- ---    ---     --        \n";
+    cout << "    |||               ---  ---  ---          --         --   ---    ------     --------         \n\n\n";
+    system("pause");
+    system("CLS");
 
-  cout << "He lifts the knife...";
-  system("pause");
-  system("CLS");
-  cout << "____________    ____       ___       ____          _         ____      ___       ________       \n"
-          "------------     ----      ---      ----          ---        -----     ---      ----------      \n"
-          "    |||           ----     ---     ----          -- --       ------    ---     ---              \n"
-          "    |||            ----    ---    ----          --   --      -------   ---    ---    -----      \n"
-          "    |||             ---- - --- - ----          ---------     ---  ---  ---   ----     ---       \n"
-          "    |||              ----------------         -----------    ---   --- ---    ---     --        \n"
-          "    |||               ---  ---  ---          --         --   ---    ------     --------         \n\n\n";
-  system("pause");
-  system("CLS");
-
-  cout << "An arrow... It had struck Ruby right in the head through the back of his witch hat and depresses his muscles to react in his dying stand. He falls next to you. Looking around for a moment for any sign of a person, you gather through in carcass's purse. Two health potions!\n";
-  hero1.gain_potion();
-  hero1.gain_potion();
-  cout << "You sit to get up, but fall back down in agony. Laying on the uncomfortable concrete, you hope for your body to regenerate what was left of you..." << endl;
-  system("pause");
-  cout << "And just like that, you feel... better?! Jumping to your feet, you play around with your muscles to feel the fully recovered parts.";
-  hero1.gain_health(99*10000);
-  cout << "You look at the shiny violet knife and reach down to pick it up, but it was already swiped from the floor. While slowly stepping away from you, an elf with a dark color of... skin stares at your appearance while you do the same. He wore a white piece of armor that would like a piece of cloth from far away, with the same colored pants and a tan cloak. You've taken noticed that the pair of arrows in his pack is the same as the one in Ruby's head. At the same time, the elf seemed to relax as well, still having a flare of destruction in his eyes. \n";
-  cout << "He raises the knife, pointing at his face, then says \"Mind if I take this?\" His voice sounding like a drumstick was hitting the inside of a bell." << endl;
-  cout << "You open your mouth to reply, but the elf shoves the purple weapon in his pack in a matter of seconds.\n";
-  cout << "\"You may have stumbled upon his work, but he did the same to my friend. We're not classified as enemies right now. Therefore, you should get going because your horse is waiting for you.\"";
-  cout << "You nod to his understandment and without asking his name, you walk towards the two doors.";
+    cout << "An arrow... It had struck Ruby right in the head through the back of his witch hat and depresses his muscles to react in his dying stand. He falls next to you. Looking around for a moment for any sign of a person, you gather through in carcass's purse. Two health potions!\n";
+    hero1.gain_potion();
+    hero1.gain_potion();
+    cout << "You sit to get up, but fall back down in agony. Laying on the uncomfortable concrete, you hope for your body to regenerate what was left of you..." << endl;
+    system("pause");
+    cout << "And just like that, you feel... better?! Jumping to your feet, you play around with your muscles to feel the fully recovered parts.";
+    hero1.gain_health(99 * 10000);
+    cout << "You look at the shiny violet knife and reach down to pick it up, but it was already swiped from the floor. While slowly stepping away from you, an elf with a dark color of... skin stares at your appearance while you do the same. He wore a white piece of armor that would like a piece of cloth from far away, with the same colored pants and a tan cloak. You've taken noticed that the pair of arrows in his pack is the same as the one in Ruby's head. At the same time, the elf seemed to relax as well, still having a flare of destruction in his eyes. \n";
+    cout << "He raises the knife, pointing at his face, then says \"Mind if I take this?\" His voice sounding like a drumstick was hitting the inside of a bell." << endl;
+    cout << "You open your mouth to reply, but the elf shoves the purple weapon in his pack in a matter of seconds.\n";
+    cout << "\"You may have stumbled upon his work, but he did the same to my friend. We're not classified as enemies right now. Therefore, you should get going because your horse is waiting for you.\" ";
+    cout << "You nod to his understandment and without asking his name, you walk towards the two doors. You can finally start finishing your journey\n";
+    system("pause");
 }
 
 void Son(Hero hero1, villain villain1) {
@@ -1181,101 +1223,101 @@ void Wells(Hero hero1, villain villain1)
         villainTurn = 1;
         while (cont)   //This will allow the game to go until someone dies
         {
-            while (heroTurn == 2)
+            while (heroTurn == 2)  //The hero's turn
             {
-                cout << "Would you like to heavy attack(1), which would deal a base of 10 damage to yourself, or light attack(2), which does nothing to you, or use a health potion(3): ";
+                cout << "Would you like to heavy attack(1), which would deal a base of 25 damage to yourself, or light attack(2), which does nothing to you, or use a health potion(3): ";  //Asking the user what they want to do
                 cin >> heroAttackType;
 
                 system("Pause");
-                system("CLS");
+                system("CLS");  //Clearing the screen
 
-                if (heroAttackType == 1)
+                if (heroAttackType == 1)  //If the hero chooses the first option
                 {
-                    damage = hero1.attack_h();
-                    hero1.true_damage_loss(10);
-                    villain1.takeDamage(damage);
+                    damage = hero1.attack_h();  //Using a member function from the hero class to get damage
+                    hero1.true_damage_loss(25);  //A consequence for using a heavy attack, meant to deter the user from using it
+                    villain1.takeDamage(damage);  //Dealing damage to the villain
 
-                    cout << "You did " << damage << " damage." << endl << endl;
-                    cout << "Your new health after the base damage is: " << hero1.getHealth() << " hp." << endl;
-                    cout << "Adam's health after you attack is: " << villain1.getHealth() << " hp." << endl;
+                    cout << "You did " << damage << " damage." << endl << endl;  //Telling the user how much damage they did
+                    cout << "Your new health after the base damage is: " << hero1.getHealth() << " hp." << endl;  //Telling the user their new health after the consequence
+                    cout << "Adam's health after you attack is: " << villain1.getHealth() << " hp." << endl;  //Telling the user the villain's new health after the attack
 
                     system("Pause");
-                    system("CLS");
+                    system("CLS");  //Clearing the screen
 
-                    if (villain1.getHealth() <= 0)
+                    if (villain1.getHealth() <= 0)  //If the villain dies
                     {
-                        cout << "YOU WIN!!! THANKS FOR PLAYING!!!" << endl << endl;
+                        cout << "YOU WIN!!! THANKS FOR PLAYING!!!" << endl << endl;  //Telling the user that they won
                         heroTurn = 1;
                         villainTurn = 1;
                         cont = 0;
                     }
-                    else if (hero1.getHealth() <= 0)
+                    else if (hero1.getHealth() <= 0)  //If the hero dies
                     {
-                        cout << "YOU LOSE";
+                        cout << "YOU LOSE";  //Telling the user that they lost
 
                         system("Pause");
-                        system("CLS");
+                        system("CLS");  //Clearing the screen
 
-                        cout << "GAME OVER";
+                        cout << "GAME OVER";  //GAME OVER
                         heroTurn = 1;
                         villainTurn = 1;
                         cont = 0;
                     }
-                    else
+                    else  //If no one dies
                     {
-                        cout << "NEXT ROUND" << endl << endl;
-                        cout << "Your Hp: " << hero1.getHealth() << endl;
-                        cout << "Adam Hp: " << villain1.getHealth() << endl << endl << endl;
+                        cout << "NEXT ROUND" << endl << endl;  //Telling the user that we are moving to the next round
+                        cout << "Your Hp: " << hero1.getHealth() << endl;  //Telling the user their hp
+                        cout << "Adam Hp: " << villain1.getHealth() << endl << endl << endl;  //Telling the user the villain's hp
 
                         system("Pause");
-                        system("CLS");
+                        system("CLS");  //Clearing the screen
 
                         heroTurn = 1;
                         villainTurn = 2;
                     }
                 }
-                else if (heroAttackType == 2)
+                else if (heroAttackType == 2)  //If the hero selects the second option
                 {
-                    damage = hero1.attack_l();
-                    villain1.takeDamage(damage);
+                    damage = hero1.attack_l();  //Setting damage using a member function
+                    villain1.takeDamage(damage);  //Having the villain take damage
 
-                    cout << "You did " << damage << " damage." << endl << endl;
-                    cout << "Adam's health after you attack is: " << villain1.getHealth() << " hp." << endl;
+                    cout << "You did " << damage << " damage." << endl << endl;  //Telling the user how much damage they did
+                    cout << "Adam's health after you attack is: " << villain1.getHealth() << " hp." << endl;  //Telling th user the villain's health
 
                     system("Pause");
-                    system("CLS");
+                    system("CLS");  //Clearing the screen
 
                     heroTurn = 1;
                     villainTurn = 2;
                 }
-                else if (heroAttackType == 3)
+                else if (heroAttackType == 3)  //If the user selects the third option
                 {
-                    if (numPotions <= 0)
+                    if (numPotions <= 0)  //If the user doesn't have any potions left
                     {
-                        cout << "You don't have any potions left. Your turn is now over." << endl;
+                        cout << "You don't have any potions left. Your turn is now over." << endl;  //Telling the user that they don't have any potions left
 
                         system("Pause");
-                        system("CLS");
+                        system("CLS");  //Clearing the screen
                     }
-                    else
+                    else  //If the user has potions left
                     {
-                        --numPotions;
-                        hero1.h_potion();
-                        cout << "You have " << numPotions << " health potion(s) left, and your new HP is " << hero1.getHealth() << " hp." << endl;
+                        --numPotions;  //Subtracting from the number of potions
+                        hero1.h_potion();  //Calling a member function to use a potion
+                        cout << "You have " << numPotions << " health potion(s) left, and your new HP is " << hero1.getHealth() << " hp." << endl;  //Telling the user how many potions they have left
 
                         system("Pause");
-                        system("CLS");
+                        system("CLS");  //Clearing the screen
                     }
 
                     heroTurn = 1;
                     villainTurn = 2;
                 }
-                else
+                else  //If the user enters something invalid
                 {
-                    cout << "Invalid Attack Type! You Forfeit Your Turn And Adam Attacks!" << endl;
+                    cout << "Invalid Attack Type! You Forfeit Your Turn And Adam Attacks!" << endl;  //Telling the user that they entered something invalid, and they forfeit their turn
 
                     system("Pause");
-                    system("CLS");
+                    system("CLS");  //Clearing the screen
 
                     heroTurn = 1;
                     villainTurn = 2;
@@ -1284,24 +1326,24 @@ void Wells(Hero hero1, villain villain1)
 
             damage = 0;
 
-            while (villainTurn == 2)
+            while (villainTurn == 2)  //Villain's turn
             {
-                damage = villain1.attack();
-                hero1.loss_health(damage);
+                damage = villain1.attack();  //Setting damage using a member function
+                hero1.loss_health(damage);  //Taking health from the hero
 
-                cout << "Your health is: " << hero1.getHealth() << " hp." << endl;
+                cout << "Your health is: " << hero1.getHealth() << " hp." << endl;  //Telling the user their hp
 
                 system("Pause");
-                system("CLS");
+                system("CLS");  //Clearing the screen
 
-                if (villain1.getHealth() <= 0)
+                if (villain1.getHealth() <= 0)  //If the villain dies
                 {
-                    cout << "YOU WIN!!! THANKS FOR PLAYING!!!" << endl << endl;
+                    cout << "YOU WIN!!! THANKS FOR PLAYING!!!" << endl << endl;  //Telling the user that they won
                     heroTurn = 1;
                     villainTurn = 1;
                     cont = 0;
                 }
-                else if (hero1.getHealth() <= 0)
+                else if (hero1.getHealth() <= 0)  //If the hero dies
                 {
                     cout << "YOU LOSE";
 
@@ -1313,7 +1355,7 @@ void Wells(Hero hero1, villain villain1)
                     villainTurn = 1;
                     cont = 0;
                 }
-                else
+                else  //If no one dies
                 {
                     cout << "NEXT ROUND" << endl << endl;
                     cout << "Your Hp: " << hero1.getHealth() << endl;
@@ -1330,7 +1372,7 @@ void Wells(Hero hero1, villain villain1)
         }
     }
 
-    if (hero1.getSpeed() < villain1.getSpeed())
+    if (hero1.getSpeed() < villain1.getSpeed())  //If the villain goes first. Everything is the same as when the hero goes first, except that the villain attacks first.
     {
         villainTurn = 2;
         heroTurn = 1;
@@ -1338,7 +1380,7 @@ void Wells(Hero hero1, villain villain1)
         {
             while (heroTurn == 2)
             {
-                cout << "Would you like to heavy attack(1), which would deal a base of 10 damage to yourself, or light attack(2), which does nothing to you, or use a health potion(3): ";
+                cout << "Would you like to heavy attack(1), which would deal a base of 25 damage to yourself, or light attack(2), which does nothing to you, or use a health potion(3): ";
                 cin >> heroAttackType;
 
                 system("Pause");
@@ -1347,7 +1389,7 @@ void Wells(Hero hero1, villain villain1)
                 if (heroAttackType == 1)
                 {
                     damage = hero1.attack_h();
-                    hero1.true_damage_loss(10);
+                    hero1.true_damage_loss(25);
                     villain1.takeDamage(damage);
 
                     cout << "You did " << damage << " damage." << endl << endl;
@@ -1588,3 +1630,16 @@ bool again = true;//Variable for while loop to see if someone died yet
   }
   system("CLS"); //Clear battle screen 
 }
+
+//A function to animate outputed text provided by yours truely :) - Landen M.
+//Does not work in replit
+//void aniOut(string output)
+//{
+//    int length = output.length();
+//
+//    for (int i = 0; i < length; ++i) {
+//        cout << output[i];
+//        Sleep(20);
+//    }
+//
+//}

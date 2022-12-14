@@ -9,8 +9,7 @@ using namespace std;
 
 class villain {
 public:
-  villain(float health, float speed, float strength,
-          float defense);             // constructor
+  villain(float health, float speed, float strength, float defense);             // constructor
   float attack();                     // Mutator
   float takeDamage(float heroAttack); // mutator
   float getSpeed();

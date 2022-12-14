@@ -61,12 +61,9 @@ Hero::Hero(const int MAX_HP, int speed, int str, int def)
 void Hero::loss_health(float damage) // Mutator
 {
   // Receives parameter concerning how much health is lost then applies it
-  float reduction =
-      defense / 100; // Converts defense to percent (10 def = 10% reduction)
-  float wound =
-      (damage *
-       reduction); // Subtracts a percent of the damage from the original damage
-  health -= wound; // Removes health
+  float reduction = defense / 100.0; // Converts defense to percent (10 def = 10% reduction)
+  damage -= damage * reduction; // Subtracts a percent of the damage from the original damage
+  health -= damage; // Removes health
 
   cout << "You lost " << damage << " health points." << endl;
 
